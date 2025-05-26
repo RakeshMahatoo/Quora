@@ -18,6 +18,12 @@ app.set("views", path.join(__dirname, "/views")); // set the view directory
 
 app.use(express.static(path.join(__dirname, "public")));
 
+
+// root directory
+app.get("/", (req, res) => {
+  res.redirect("/posts");
+});
+
 // let make data
 
 let post = [
@@ -137,7 +143,6 @@ app.delete("/posts/:id", (req,res) => {
   let { id } = req.params; // ye id ko req.params se le lega
     post = post.filter(p => p.id !== id); // ye idPosts ko filter karega aur id ke barabar wale post ko hata dega
   res.redirect("/posts"); // ye posts url mein redirect karega
-  alert("Post deleted successfully!"); // ye alert message show karega
 
 });
 

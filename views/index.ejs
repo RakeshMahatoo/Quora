@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Posts</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<style>
+   #submitbtn {
+      margin-left: 42%;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+   
+    }
+
+    #submitbtn:hover {
+      background-color: #0ea9e2;
+      box-shadow: 0px 4px 8px rgba(224, 31, 31, 0.914);
+    }
+</style>
+
+<body>
+  <div class="title">
+    <h1>Quora Posts</h1>
+  </div>
+    <a href="http://localhost:3000/posts/new" class="button">
+        <button id="submitbtn">Create New Post</button></a>
+
+  <% for(postData of post){ %>
+    <div class="post">
+      <h3 class="username">@<%= postData.username %>
+      </h3>
+      <h4 class="content">
+        <%= postData.content %>
+      </h4>
+    
+      <a href="http://localhost:3000/posts/<%= postData.id %>">Details</a>
+      <a href="http://localhost:3000/posts/<%= postData.id %>/edit">Edit</a>
+     <form action="http://localhost:3000/posts/<%= postData.id %>?_method=DELETE" method="POST" style="display:inline;">
+       <button type="submit">Delete</button>
+     </form>
+    </div>
+
+    <% } %>
+</body>
+
+</html>

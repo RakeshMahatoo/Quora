@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Post</title>
+    <link rel="stylesheet" href="edit.css">
+    <style>
+         body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      padding: 40px;
+      color: #333;
+    }
+
+    h1 {
+      color: #2c3e50;
+      text-align: center;
+    }
+
+    p {
+      font-size: 16px;
+      margin: 10px 0;
+      text-align: center;
+    }
+
+    .form {
+      max-width: 500px;
+      margin: 30px auto;
+      background-color: #ffffff;
+      padding: 20px 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .form textarea {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      resize: vertical;
+      box-sizing: border-box;
+    }
+
+    #submitbtn {
+      margin-top: 15px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    #submitbtn:hover {
+      background-color: #2980b9;
+    }
+    </style>
+</head>
+<body>
+    <h1>Edit your Post:</h1>
+    <p>Post id: <%= idPosts.id %></p>
+    <p>Post username  @<%= idPosts.username %> </p>
+    <form class="form" action="http://localhost:3000/posts/<%= idPosts.id %>?_method=PATCH" method="post">
+        <textarea rows="15" cols="30" class="input textarea" name="content" id="content"><%= idPosts.content %> </textarea>
+        <button id="submitbtn">Submit</button>
+       
+    </form>
+</body>
+</html>
